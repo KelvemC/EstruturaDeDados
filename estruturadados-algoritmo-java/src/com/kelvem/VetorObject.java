@@ -1,42 +1,16 @@
 package com.kelvem;
 
-import java.util.Arrays;
-
-public class Vetor {
-	
-	private String[] elementos;
+public class VetorObject {
+	private Object[] elementos;
 	private int tamanho = 0;
 	
 	
-	public Vetor(int capacidade) {
-		this.elementos = new String[capacidade];
+	public VetorObject(int capacidade) {
+		this.elementos = new Object[capacidade];
 	}
-	/*
-	 * Esse método não é eficiente
-	public void adiciona(String elemento) {
-		for(int i = 0; i < this.elementos.length; i++) {
-			if(this.elementos[i] == null) {
-				this.elementos[i] = elemento;
-				break;
-			}
-		}
-	}
-	*/
-	
-	/*
-	 * Adiciona Elementos com tratamento de exception
-	public void adiciona(String elemento) throws Exception {
-		if(this.tamanho < this.elementos.length) {
-			this.elementos[this.tamanho] = elemento;
-			this.tamanho++;
-		}else {
-			throw new Exception("Vetor já está cheio, não é possível adicionar mais elementos.");
-		}
-	}
-	*/
 	
 	//Adicionando elementos em um vetor de forma eficiente
-	public boolean adiciona(String elemento) {
+	public boolean adiciona(Object elemento) {
 		aumentaCapacidade();
 		if(this.tamanho < this.elementos.length) {
 			this.elementos[this.tamanho] = elemento;
@@ -51,23 +25,6 @@ public class Vetor {
 		return this.tamanho;
 	}
 	
-	//Imprimir os elementos do vetor - não eficiente
-	/*
-	public String toString() {
-		String s = "[";
-		for(int i = 0; i<this.tamanho-1; i++) {
-			s+=this.elementos[i];
-			s+=", ";
-		}
-		if(tamanho>0) {
-			s+=this.elementos[this.tamanho-1];
-			s+=", ";
-		}
-		
-		s+="]";
-		return s;
-	}
-	*/
 	
 	//Imprimindo os elementos do vetor - forma eficiente
 	public String toString() {	
@@ -87,7 +44,7 @@ public class Vetor {
 	}
 	
 	//Buscar elemento em uma determinada posição - tamanho real da lista
-	public String busca(int posicao) {
+	public Object busca(int posicao) {
 		if(!((posicao>=0) && (posicao<this.tamanho))) {
 			throw new IllegalArgumentException("Posição inválida");
 		}
@@ -95,7 +52,7 @@ public class Vetor {
 	}
 	
 	//Verificando se o elemento existe no vetor
-	public int busca(String elemento) {
+	public int busca(Object elemento) {
 		//fazendo a busca sequencial
 		for(int i = 0; i < this.tamanho; i++) {
 			if(this.elementos[i].equals(elemento)){
@@ -122,7 +79,7 @@ public class Vetor {
 	}*/
 	
 	//Adicionar um elemento em qualquer posição do vetor
-	public boolean adiciona(int posicao, String elemento) {
+	public boolean adiciona(int posicao, Object elemento) {
 		aumentaCapacidade();
 		if(!((posicao>=0) && (posicao<this.tamanho))) {
 			throw new IllegalArgumentException("Posição inválida");
@@ -139,7 +96,7 @@ public class Vetor {
 	
 	private void aumentaCapacidade() {
 		if(this.tamanho == this.elementos.length) {
-			String[] elementosNovos = new String[this.elementos.length*2];
+			Object[] elementosNovos = new Object[this.elementos.length*2];
 			for(int i = 0; i < this.elementos.length; i++) {
 				elementosNovos[i] = this.elementos[i];
 			}
@@ -160,6 +117,4 @@ public class Vetor {
 		this.tamanho--;
 		
 	}
-	
-	
 }
