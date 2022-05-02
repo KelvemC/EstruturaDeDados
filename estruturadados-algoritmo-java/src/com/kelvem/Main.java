@@ -61,5 +61,10 @@ public class Main {
 		
 		System.out.println(lista2);
 		System.out.println("Tamanho = " + lista2.tamanho());
+		
+		//Testando forma genérica - eficiente;
+		Lista<String> vetor = new Lista<String>(5);
+		vetor.adiciona("1");
+		System.out.println(vetor);
 	}
 }
