@@ -37,6 +37,7 @@ public class Vetor {
 	
 	//Adicionando elementos em um vetor de forma eficiente
 	public boolean adiciona(String elemento) {
+		aumentaCapacidade();
 		if(this.tamanho < this.elementos.length) {
 			this.elementos[this.tamanho] = elemento;
 			this.tamanho++;
@@ -122,6 +123,7 @@ public class Vetor {
 	
 	//Adicionar um elemento em qualquer posição do vetor
 	public boolean adiciona(int posicao, String elemento) {
+		aumentaCapacidade();
 		if(!((posicao>=0) && (posicao<this.tamanho))) {
 			throw new IllegalArgumentException("Posição inválida");
 		}
@@ -134,5 +136,16 @@ public class Vetor {
 		
 		return true;
 	}
+	
+	private void aumentaCapacidade() {
+		if(this.tamanho == this.elementos.length) {
+			String[] elementosNovos = new String[this.elementos.length*2];
+			for(int i = 0; i < this.elementos.length; i++) {
+				elementosNovos[i] = this.elementos[i];
+			}
+			this.elementos = elementosNovos;
+		}
+	}
+	
 	
 }

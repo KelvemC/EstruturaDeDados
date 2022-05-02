@@ -2,7 +2,7 @@ package com.kelvem;
 
 public class Main {
 	public static void main(String[] args) {
-		Vetor lista = new Vetor(10);
+		Vetor lista = new Vetor(7);
 		/*
 		try {
 			lista.adiciona("Curso Estrutura de Dados com Java");
@@ -33,6 +33,12 @@ public class Main {
 		lista.adiciona(0, "A");
 		System.out.println(lista);
 		lista.adiciona(3, "D");
+		System.out.println(lista);
+		
+		//Testando método de aumentar capacidade;
+		
+		System.out.println(lista.tamanho());
+		lista.adiciona("Teste");
 		System.out.println(lista);
 	}
 }
