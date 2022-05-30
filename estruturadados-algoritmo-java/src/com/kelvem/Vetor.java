@@ -6,9 +6,12 @@ public class Vetor {
 	
 	private String[] elementos;
 	private int tamanho = 0;
+	private int capacidade;
+	private int ocorrencia;
 	
 	
 	public Vetor(int capacidade) {
+		this.capacidade = capacidade;
 		this.elementos = new String[capacidade];
 	}
 	/*
@@ -106,7 +109,7 @@ public class Vetor {
 	}
 	
 	//verificar se existe mais de uma ocorrência de um elemento passado como parâmetro.
-	/*
+	
 	public boolean verifica(String elemento) {
 		int contador = 0;
 		for(int i = 0; i<this.tamanho; i++) {
@@ -119,7 +122,8 @@ public class Vetor {
 		}
 		return false;
 		
-	}*/
+	}
+	
 	
 	//Adicionar um elemento em qualquer posição do vetor
 	public boolean adiciona(int posicao, String elemento) {
@@ -160,6 +164,68 @@ public class Vetor {
 		this.tamanho--;
 		
 	}
+	/*
+	//Questão 1
+	public void limpar() {
+		String[] listaLimpa;
+		listaLimpa = new String[capacidade];
+		this.elementos = listaLimpa;
+		this.tamanho = 0;
+	}
 	
+	//Questão 2
+	public int procura(String elemento) {
+		for(int i = 0; i < this.tamanho; i++) {
+			if(this.elementos[i].equals(elemento)){
+				this.ocorrencia = i;
+			}
+		
+		}
+		return ocorrencia;
+	}
+	//Questão3
+	public void removeC(String elemento) {
+		for(int i = 0; i<this.tamanho; i++) {
+			if(this.elementos[i].equals(elemento)) {
+				remove(i);
+				
+			}
+		
+		}
+		
+	}
+	*/
+	
+	//Questão 1
+	public void limpa() {
+		this.tamanho = 0;
+		/*
+		this.tamanho = 0;
+		for(int i =0; i < this.tamanho; i++) {
+			this.elementos[i] = null;
+		}
+		*/
+	}
+	
+	//Questão 2
+	
+	public int retornarIndice(String elemento) {
+		//Melhor forma
+		for(int i = tamanho-1; i>=0; i--) {
+			if(this.elementos[i].equals(elemento)){
+				return i;
+			}
+		}
+		return -1;
+	}
+	//Questão 3
+	public void removeOcorre(String elemento) {
+		for(int i = tamanho-1; i>=0; i--) {
+			if(this.elementos[i].equals(elemento)) {
+				remove(i);
+			}
+		}
+	}
 	
 }
+		
